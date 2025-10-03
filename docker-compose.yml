@@ -11,6 +11,7 @@ services:
       - .:/home/node/app
     depends_on:
       - db
+    user: "1002:1002"
 
   db:
     build: .docker/postgres

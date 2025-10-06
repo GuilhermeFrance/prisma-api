@@ -23,6 +23,13 @@ export class UsersRepository {
       where: {
         id,
       },
+      include: {
+        posts: {
+          select: {
+            title: true,
+          },
+        },
+      },
     });
     if (!user) {
       throw new NotFoundError(`Usuário com o ${id} não encontrado.`);

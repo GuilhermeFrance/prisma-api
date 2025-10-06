@@ -3,8 +3,8 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersRepository } from './repositories/users.repository';
 import { UserEntity } from './entities/user.entity';
-import { UnauthorizedError } from 'src/common/filters/http-exception/errors/types/UnauthorizedError';
-import { NotFoundError } from 'src/common/filters/http-exception/errors/types/NotFOundError';
+//import { UnauthorizedError } from 'src/common/filters/http-exception/errors/types/UnauthorizedError';
+//import { NotFoundError } from 'src/common/filters/http-exception/errors/types/NotFOundError';
 @Injectable()
 export class UsersService {
   constructor(private readonly repository: UsersRepository) {}
@@ -13,7 +13,7 @@ export class UsersService {
   }
 
   findAll(): Promise<UserEntity[]> {
-    throw new UnauthorizedError('Não autorizado');
+    // throw new UnauthorizedError('Não autorizado');
     return this.repository.findAll();
   }
 

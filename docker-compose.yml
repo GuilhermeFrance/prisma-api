@@ -9,6 +9,7 @@ services:
       - "5555:5555"
     volumes:
       - .:/home/node/app
+      - ./.docker/cache:/home/node/.cache
     depends_on:
       - db
     user: "1002:1002"

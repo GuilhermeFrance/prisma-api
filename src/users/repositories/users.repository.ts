@@ -11,11 +11,23 @@ export class UsersRepository {
   async create(createUserDto: CreateUserDto): Promise<UserEntity> {
     return this.prisma.user.create({
       data: createUserDto,
+      include: {
+        posts: {},
+      },
     });
   }
 
   async findAll(): Promise<UserEntity[]> {
-    return this.prisma.user.findMany();
+    return this.prisma.user.findMany({
+      include: {
+        posts: {
+          select: {
+            title: true,
+            createdAt: true,
+          },
+        },
+      },
+    });
   }
 
   async findOne(id: number): Promise<UserEntity> {
@@ -27,6 +39,7 @@ export class UsersRepository {
         posts: {
           select: {
             title: true,
+            createdAt: true,
           },
         },
       },
